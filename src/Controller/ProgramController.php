@@ -33,7 +33,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/show/{id<\d+>}", methods={"GET"}, name="show")
      */
-    public function show($id): Response
+    public function show(int $id = 1): Response
     {
         return $this->render('program/show.html.twig', [
             'id' => $id
