@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CategoryMovie{% endblock %}
+
+{% block body %}
+    <div class="page__container"></div>
+        <div class="category-show__container">
+            
+            {% for program in programs %}
+                <div class="program-head">
+                    <h3>{{ loop.index }} / {{ program.title }} / ID : {{ program.id }}</h3> <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+                </div>
+                <p>Summary : {{ program.summary }}</p>
+                <p class="category">catégorie : {{ program.category.name }}</p>     
+            {% else %}
+                <p>Aucune programme pour cette catégorie.</p>
+            {% endfor %}
+            
+        </div>
+
+{% endblock %}

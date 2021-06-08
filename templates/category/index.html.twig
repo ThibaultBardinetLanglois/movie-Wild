@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All categories{% endblock %}
+
+{% block body %}
+    <div class="page__container"></div>
+    <div class="category__container">
+
+        <ul>
+            {% for category in categories %}  
+                <li><a href="{{ path('categorie_show', { name: category.name })}}">{{ loop.index }} / {{ category.name }}</a></li>   
+            {% else %}
+                Aucune catégorie trouvée.
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}

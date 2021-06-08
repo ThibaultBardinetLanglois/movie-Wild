@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Série #{{ program.id }}/ Saison #{{ season.id }}{% endblock %}
+
+{% block body %}
+    <div class="page__container">     
+    </div>
+
+    <div class="show-saison__container">
+
+        <h1>Saison {{ season.number }} de {{ program.title }}</h1>
+        <div class="media">
+            <div class="media-body">
+                <p>Cette saison a été diffusée en {{ season.year }}</p>
+                <p>{{ program.summary }}</p>
+            </div>
+            <img src="{{ program.poster }}" alt="{{ program.title }} poster">
+        </div>
+
+        <h2>Listes des épisodes</h2>
+        <div class="episodes">
+            {% for episode in episodes %}
+                <a href="{{ path("program_episode_show", {program_id: program.id, season_id: season.id, episode_id: episode.id}) }}">
+                    Épisode {{ episode.number }} : {{ episode.title }}
+                </a>
+            {% endfor %}
+        </div>
+        <a href="{{ path('program_index') }}">
+            Retour à la liste des programmes
+        </a>
+    </div>
+        
+    
+{% endblock %}

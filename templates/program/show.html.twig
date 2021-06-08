@@ -1,9 +1,31 @@
 {% extends "base.html.twig" %}
+{% block title %}Série #{{ program.id }}{% endblock %}
+
 {% block body %}
-    <div class="page__container">
-        
+    <div class="page__container">     
     </div>
-    <h1 class="show-title"> Program {{ id }}</h1>
+
+    <div class="show__container">
+        <div class="media">
+            <img src="{{ program.poster }}" alt="{{ program.title }} poster">
+            <div class="media-body">
+                <h1>{{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+                <p>Catégorie : {{ program.category.name }}</p>
+            </div>
+        </div>
+        {% for season in seasons %}
+            <p class="seasons">
+                <a href="{{ path('program_season_show', {program_id: program.id, season_id: season.id}) }}">
+                    Saison {{ season.number ?? "Non répertorié" }}
+                </a>
+            </p>
+        {% endfor %}
+        
+        <a href="{{ path('program_index') }}">
+            Retour à la liste des programmes
+        </a>
+    </div>
         
     
 {% endblock %}
